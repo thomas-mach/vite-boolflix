@@ -1,31 +1,27 @@
 <template>
-    <div>
-        <input type="text" name="" id="" v-model="searchValue">
-        <button @click="search">Search</button>
-    </div>
+  <div>
+    <input type="text" name="" id="" v-model="store.searchResult">
+    <button @click="$emit('search')">Search</button>
+
+  </div>
 </template>
 
 <script>
-    import {store} from '../store.js'
-    
-    export default {
-        data(){
-      return{
-        searchValue: '',
-        store: store,
-        
-      }
-    },
-    methods: {
-      search(){
-        const query = this.searchValue 
-        store.searchResult = query
-      }
-    },
-  }
- 
+import { store } from '../store.js'
+
+export default {
+  data() {
+    return {
+      store: store,
+    }
+  },
+  methods: {
+    search() {
+
+    }
+  },
+}
+
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
