@@ -2,24 +2,24 @@
     <div>
         <input type="text" name="" id="" v-model="searchValue">
         <button @click="search">Search</button>
-        <div>{{ searchResult }}</div>
     </div>
 </template>
 
 <script>
-
+    import {store} from '../store.js'
+    
     export default {
         data(){
       return{
         searchValue: '',
-        searchResult: ''
+        store: store,
         
       }
     },
     methods: {
       search(){
         const query = this.searchValue 
-        this.searchResult = query
+        store.searchResult = query
       }
     },
   }
