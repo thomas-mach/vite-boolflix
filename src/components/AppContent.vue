@@ -47,16 +47,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-    width: 100vw;
-    min-height: 100vh;
-    background-color: #24252B;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 12px;
-}
+@use '../style/partials/_appContent.scss'
 </style>

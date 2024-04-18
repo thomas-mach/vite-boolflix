@@ -1,0 +1,44 @@
+.star-yellow {
+    color: yellow;
+}
+
+.card {
+    width: 342px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    cursor: pointer;
+}
+
+.description {
+    position: absolute;
+    padding: 12px;
+    top: 0;
+    left: 0;
+}
+
+.description p {
+    color: aliceblue;
+    font-weight: 100;
+    line-height: 24px;
+    font-size: 14px;
+    user-select: none;
+}
+
+p>img {
+    width: 40px;
+}
+
+.card:hover .image {
+    display: none;
+}
+
+.image {
+    z-index: 1;
+}
+
+.stars {
+    user-select: none;
+    color: red;
+}

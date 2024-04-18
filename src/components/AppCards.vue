@@ -9,8 +9,9 @@
             <p v-else-if="item.original_language === 'fr'"><img src="../../public/france_round_icon_64.png" alt=""></p>
             <p v-else-if="item.original_language === 'it'"><img src="../../public/italy_round_icon_64.png" alt=""></p>
             <p v-else>Lingua: {{ item.original_language }}</p>
-            <div class="stars">
-                <div v-for="n in 5" :key="n" :class="{ 'star-yellow': n <= voto }">*</div>
+            <div>
+                <font-awesome-icon class="stars" v-for="n in 5" :key="n"
+                    :icon="n <= voto ? ['fas', 'star'] : ['far', 'star']" />
             </div>
         </div>
     </div>
@@ -34,57 +35,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.star-yellow {
-    color: yellow;
-}
-
-
-.card {
-    width: 342px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    position: relative;
-
-
-}
-
-.description {
-    position: absolute;
-    padding: 12px;
-    top: 0;
-    left: 0;
-}
-
-.description p {
-    color: aliceblue;
-    font-weight: 100;
-    line-height: 24px;
-    font-size: 14px;
-    user-select: none;
-}
-
-p>img {
-    width: 40px;
-}
-
-.card:hover .image {
-    display: none;
-}
-
-.image {
-    z-index: 1;
-}
-
-.stars {
-    font-size: 80px;
-    display: flex;
-    gap: 5px;
-    user-select: none;
-}
-
-.stars p {
-    margin-top: 10px;
-    font-size: 40px;
-}
+@use '../style/partials/appCards'
 </style>
