@@ -22,7 +22,7 @@ export default {
     },
     data() {
         return {
-            store: store
+            store: store,
         }
     },
     methods: {
@@ -42,10 +42,23 @@ export default {
                 // console.log('tv ' + JSON.stringify(this.store.cardsArrayTv));
             })
         }
+
     }
+
 }
 </script>
 
 <style lang="scss" scoped>
-@use '../style/partials/_appContent.scss'
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #24252B;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 12px;
+}
 </style>

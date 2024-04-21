@@ -32,5 +32,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '../style/partials/_appHeader.scss'
+.container {
+  height: 100px;
+  border-bottom: 1px solid rgb(81, 81, 81);
+  display: flex;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+  padding: 12px;
+}
+
+img {
+  width: 200px;
+}
+
+button {
+  cursor: pointer;
+}
 </style>
