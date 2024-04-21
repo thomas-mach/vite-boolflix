@@ -4,15 +4,14 @@
         <div class="description">
             <p>Titolo: {{ item.title }} {{ item.name }}</p>
             <p>Titolo Originale: {{ item.original_title }} {{ item.original_name }}</p>
-            <p v-if="item.original_language === 'en'"><img src="../../public/united_kingdom_round_icon_64.png" alt="">
-            </p>
-            <p v-else-if="item.original_language === 'fr'"><img src="../../public/france_round_icon_64.png" alt=""></p>
-            <p v-else-if="item.original_language === 'it'"><img src="../../public/italy_round_icon_64.png" alt=""></p>
-            <p v-else>Lingua: {{ item.original_language }}</p>
+            <img class="flag_img" :src="imageFlag" alt="">
+            <div> {{ langString }}</div>
             <div>
                 <font-awesome-icon class="stars" v-for="n in 5" :key="n"
                     :icon="n <= voto ? ['fas', 'star'] : ['far', 'star']" />
             </div>
+
+
         </div>
     </div>
 </template>
@@ -20,9 +19,17 @@
 <script>
 export default {
     data() {
-        const voto = this.item.vote_average / 2
         return {
-            voto: Math.round(voto)
+            imageFlag: '',
+            langString: '',
+            voto: 0,
+            language: [
+                { lang: 'en', flag: "../../public/united_kingdom_round_icon_64.png" },
+                { lang: 'fr', flag: "../../public/france_round_icon_64.png" },
+                { lang: 'it', flag: "../../public/italy_round_icon_64.png" },
+                { lang: 'ja', flag: "../../public/japan_round_icon_64.png" },
+                { lang: 'es', flag: "../../public/spain_round_icon_64.png" },
+            ]
         }
     },
     props: {
@@ -30,10 +37,75 @@ export default {
             type: Object,
             required: true
         }
+    },
+    methods: {
+        checLanguage() {
+            for (let i = 0; i < this.language.length; i++) {
+                if (this.language[i].lang === this.item.original_language) {
+                    this.imageFlag = this.language[i].flag
+                    return this.imageFlag
+                }
+            }
+            this.langString = 'language: ' + this.item.original_language
+            return this.langString
+        },
+        votoCalc() {
+            this.voto = this.item.vote_average / 2
+            this.voto = Math.round(this.voto)
+            return this.voto
+        }
+
+    },
+    created() {
+        this.checLanguage()
+        this.votoCalc()
     }
+
 }
+
 </script>
 
 <style lang="scss" scoped>
-@use '../style/partials/appCards'
+.stars {
+    font-size: 20px;
+    user-select: none;
+    color: red;
+}
+
+.star-yellow {
+    color: yellow;
+}
+
+.card {
+    width: 342px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    cursor: pointer;
+}
+
+.description {
+    position: absolute;
+    padding: 12px;
+    top: 0;
+    left: 0;
+    color: aliceblue;
+    font-weight: 100;
+    line-height: 24px;
+    font-size: 14px;
+    user-select: none;
+}
+
+.card:hover .image {
+    display: none;
+}
+
+.image {
+    z-index: 1;
+}
+
+.flag_img {
+    width: 35px;
+}
 </style>
